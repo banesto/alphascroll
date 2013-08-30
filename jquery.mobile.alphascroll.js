@@ -83,9 +83,11 @@
 
 				// handle orientation changes
 				$( window ).bind( 'orientationchange', function() {
-					$( '.alphascroll' ).unwrap().remove();
-					scrollbar = '';
-					createScrollbar();
+					if($( '.alphascroll' ).length > 0 ) {
+					    $( '.alphascroll' ).unwrap().remove();
+					    scrollbar = '';
+					    createScrollbar();	
+					}
 				});
 
 				function truncateScrollbar() {
