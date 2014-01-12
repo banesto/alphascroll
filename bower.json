@@ -1,0 +1,20 @@
+{
+	"name": "alphascroll",
+	"version": "0.1.1",
+	"main": [
+		"jquery.mobile.alphascroll.js",
+		"jquery.mobile.alphascroll.css"
+	],
+	"description": "An indexed scrollbar plugin for jQuery Mobile",
+	"license": "MIT",
+	"ignore": [
+		"demo",
+		".*",
+		"*.md",
+		"*.txt"
+	],
+	"dependencies": {
+		"jquery": ">=1.8.3",
+		"jquery mobile": ">=1.2.0"
+	}
+}
