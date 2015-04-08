@@ -34,3 +34,8 @@
 	font-size: 10px;
 	font-weight: normal;
 }
+
+#mylistview li.ui-li-divider {
+	visibility: hidden;
+	/*display: none !important;*/
+}
