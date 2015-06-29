@@ -1,11 +1,11 @@
 {
-	"name": "kregwallace/alphascroll",
-	"version": "0.1.1",
+	"name": "banesto/alphascroll",
+	"version": "1.0.0",
 	"main": [
-		"jquery.mobile.alphascroll.js",
-		"jquery.mobile.alphascroll.css"
+		"jquery.alphascroll.js",
+		"jquery.alphascroll.css"
 	],
-	"description": "An indexed scrollbar plugin for jQuery Mobile",
+	"description": "An indexed scrollbar plugin using jQuery",
 	"license": "MIT",
 	"ignore": [
 		"demo",
@@ -14,7 +14,6 @@
 		"*.txt"
 	],
 	"dependencies": {
-		"jquery": ">=1.8.3",
-		"jquery mobile": ">=1.2.0"
+		"jquery": ">=1.8.3"
 	}
 }
