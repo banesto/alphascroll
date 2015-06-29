@@ -6,17 +6,17 @@
 
       return this.each(function() {
 
-        var content       = $(this),
-            alphabet      = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
-            shortAlphabet = ['a','d','g','j','m','p','s','w','z'],
-            dividers      = [],
+        var content         = $(this),
+            alphabet        = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
+            shortAlphabet   = ['a','c','e','g','i','k','m','o','q','s','u','w','y'],
+            dividers        = [],
             dividerClass,
-            scrollbar     = '';
+            scrollbar       = '';
 
         // attach classes to list autodividers
-        $(content).find('.ui-li-divider').each( function() {
+        $(content).find('li[data-role="list-divider"]').each( function() {
           dividerClass = $(this).html().toLowerCase();
-          dividers.push(dividerClass);
+          dividers.push(dividerClass.trim());
           $(this).addClass(dividerClass);
         });
 
@@ -26,29 +26,53 @@
           $(alphabet).each(function(index, value) {
             // attach the alphascroll-item class to each letter if there is a corresponding divider (acts as a link)
             if ($.inArray(value, dividers) > -1) {
-              scrollbar += '<li id="alphascroll-' + value + '" class="alphascroll-item" unselectable="on">' + value.toUpperCase() + '</li>';
+              scrollbar += '<li data-letter="' + value + '" class="alphascroll-item" unselectable="on">' + value.toUpperCase() + '</li>';
             } else {
-              scrollbar += '<li id="alphascroll-' + value + '" unselectable="on">' + value.toUpperCase() + '</li>';
+              scrollbar += '<li data-letter="' + value + '" unselectable="on">' + value.toUpperCase() + '</li>';
             }
           });
 
-          // attach scrollbar to page
-          $(content).wrap('<div />');
-          var wrapper = $(content).parent();
-          $(wrapper).prepend('<ul class="alphascroll">' + scrollbar + '</ul>');
-          var alphascroll = $(content).closest('div').children('.alphascroll');
+          var $wrapper = $('body');
+          $wrapper.append('<ul id="alphascroll">' + scrollbar + '</ul>');
+          var alphascroll = $wrapper.children('#alphascroll');
 
           // bind touch event to scrollbar (for touch devices)
           $(alphascroll).bind('touchmove', function(e) {
             e.preventDefault();
-            var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-            // scroll to divider position
-            alphaScroll(touch.pageY);
+            if (e.originalEvent) {
+              var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+              // scroll to divider position
+              alphaScroll(touch.pageY);
+            }
+          });
+
+          // clicking on existing content navigation link
+          $(alphascroll).on('click', 'li.alphascroll-item', function() {
+            var letter    = $(this).data('letter'),
+                target    = $('li.' + letter),
+                offset    = target.offset();
+
+            $('body').scrollTo(offset.top);
+          });
+
+          // clicking on non-existing content navigation link should lead to previous letter's last item
+          $(alphascroll).on('click', 'li:not(.alphascroll-item)', function() {
+            var previous    = $(this).prevAll('.alphascroll-item').first();
+
+            if (previous.length) {
+              var letter    = previous.data('letter'),
+                  target    = $('li[data-first-letter=' + letter + ']').last(),
+                  y         = target.offset().top;
+            } else {
+              var y         = 0;
+            }
+
+            $('body').scrollTo(y);
           });
 
           // bind mouse events to scrollbar (for desktop browsers)
           $(alphascroll).bind('mousedown', function() {
-            $('.ui-page-active' ).bind('mousemove', function(e) {
+            $('body').bind('mousemove', function(e) {
               // prevent text selection while scrolling
               $(this).css({
                 "-webkit-user-select" : "none",
@@ -61,9 +85,9 @@
             });
 
             // return page to normal functioning after mouseup
-            $('.ui-page-active').bind('mouseup', function() {
+            $('body').bind('mouseup', function() {
               // release mousemove event control
-              $('.ui-page-active').unbind('mousemove');
+              $('body').unbind('mousemove');
               // return text selection to default
               $(this).css({
                 "-webkit-user-select" : "text",
@@ -75,22 +99,26 @@
           });
 
           // use short scrollbar if screen is short (like landscape on an iPhone)
-          if ($(window).height() <= 320) {
+          if ($(window).height() <= 326) {
             truncateScrollbar();
           }
         }
 
         // handle orientation changes
         $(window).bind('orientationchange', function() {
-          if ($('.alphascroll').length > 0 ) {
-            $('.alphascroll').unwrap().remove();
+          changeOrientation();
+        });
+
+        function changeOrientation() {
+          if (($('#alphascroll').length > 0 ) && $('.alphascroll').is(':visible')) {
+            $('#alphascroll').unwrap().remove();
             scrollbar = '';
             createScrollbar();
           }
-        });
+        }
 
         function truncateScrollbar() {
-          $('.alphascroll li').each(function(index, value) {
+          $('#alphascroll > li').each(function(index, value) {
             if ($.inArray($(this).html().toLowerCase(), shortAlphabet) < 0) {
               $(this).html('&#183;').addClass('truncated');
             }
@@ -99,23 +127,20 @@
 
         // do the scroll
         function alphaScroll(y) {
-          $('.alphascroll-item').each( function() {
+          $('#alphascroll li').each( function() {
             if (!(y <= $(this).offset().top || y >= $(this).offset().top + $(this).outerHeight())) {
-              var scroll_id = $(this).attr('id'),
-                  letter    = scroll_id.split('-'),
-                  target    = $('.' + letter[1]),
-                  position  = target.position(),
+              var letter    = $(this).data('letter'),
+                  target    = $('.' + letter),
+                  offset    = target.offset(),
                   header_height;
 
-              // offset scroll-top if header is displayed
-              if ($('.ui-page-active [data-role="header"]').hasClass('ui-fixed-hidden')) {
-                header_height = 0;
-              } else {
-                header_height = $('.ui-page-active [data-role="header"]').height();
+              if ($.inArray(letter, dividers)  > -1) {
+                $('html, body').scrollTo(offset.top);
+                return false;
+              } else if (letter == 'a') {
+                $('html, body').scrollTo(0);
+                return false;
               }
-
-              // scroll the page
-              $.mobile.silentScroll(position.top - header_height);
             }
           });
         }
@@ -127,3 +152,21 @@
   });
 
 })(jQuery);
+
+$.fn.scrollTo = function( target, options, callback ){
+  if(typeof options == 'function' && arguments.length == 2){ callback = options; options = target; }
+  var settings = $.extend({
+    scrollTarget  : target,
+    offsetTop     : 50,
+    duration      : 0,
+    easing        : 'swing'
+  }, options);
+  return this.each(function(){
+    var scrollPane = $(this);
+    var scrollTarget = (typeof settings.scrollTarget == "number") ? settings.scrollTarget : $(settings.scrollTarget);
+    var scrollY = (typeof scrollTarget == "number") ? scrollTarget : scrollTarget.offset().top + scrollPane.scrollTop() - parseInt(settings.offsetTop);
+    scrollPane.animate({scrollTop : scrollY }, parseInt(settings.duration), settings.easing, function(){
+      if (typeof callback == 'function') { callback.call(this); }
+    });
+  });
+}
