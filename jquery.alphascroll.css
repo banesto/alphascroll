@@ -1,31 +1,28 @@
-.alphascroll {
+#alphascroll {
   list-style: none;
   position: fixed;
-  top: 37px;
-  right: 4px;
+  top: 70px;
+  right: 0px;
   z-index: 1001;
-  font-size: 11px;
-  font-weight: bold;
   margin-left: 0;
   padding-left: 0;
-  padding: 6px 0;
+  padding: 0;
+  cursor: pointer;
+  min-width: 33px;
+  width: 6%;
 }
-.alphascroll:active {
-  background-color: rgba( 0, 0, 0, 0.4);
-  color: #fff;
-}
-.alphascroll li {
+#alphascroll li {
   display: block;
-  width: 1em;
   text-align: center;
+  font-size: 12px;
   line-height: 14px;
+  font-weight: bold;
+  color: #333;
   margin: 0;
   width: 28px;
 }
-.alphascroll li.truncated {
-  line-height: 4px;
-  font-size: 10px;
-  font-weight: normal;
+#alphascroll li.truncated {
+  display: none;
 }
 
 #mylistview li.ui-li-divider {
