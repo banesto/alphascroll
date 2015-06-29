@@ -1,59 +1,68 @@
 AlphaScroll
 =======================
 
-An indexed scrollbar plugin for jQuery Mobile
+An indexed scrollbar plugin using jQuery
 ___
 
-AlphaScroll adds an alphabetized scrolling widget to jQuery Mobile listviews that contain autodividers. The widget addresses the difficulty of quickly scrolling large lists on small mobile device screens.
+AlphaScroll adds an alphabetized scrolling widget to lists with specific dividers. The widget addresses the difficulty of quickly scrolling large lists on small mobile device screens.
 
-A [working demo](http://www.designkode.com/demos/alphascroll/) is available and you can read a bit more about this project [here](http://www.designkode.com/blog/alphascroll-jquery-mobile).
+[Try a demo that uses Bootstrap.](https://rawgit.com/banesto/alphascroll/master/demo/index.html)
 
-##Uses
+_In the example, alphascroll appears only when width is less than 792px so that it does not overflow content._
 
-AlphaScroll is for use on jQuery Mobile listviews that are alphabetically sorted and include autodividers: `data-autodividers="true"`.
+![Screenshot](https://raw.github.com/banesto/alphascroll/master/example.png)
 
-AlphaScroll responds to orientation change events to display a shortened list of letters when in landscape mode or when the screen has a height of less than 320 pixels.
+##Uses:
+
+AlphaScroll is for use on listviews that are alphabetically sorted and include dividers: `data-role="list-divider"`.
+
+AlphaScroll responds to orientation change events to display a shortened list of letters when in landscape mode or when the screen has a height of less than 326 pixels.
+
+##Features
+* No jQuery Mobile requirement
+* Ability to separate list into wrappers - suitable for Bootstrap
+* If content exists in the list, clicking on alphabet navigation letter scrolls content
+* Clicking on non-existing content navigation link leads to previous letter's last item ~~or very top of the page~~
+* Smooth content scrolling
+* Compatible with bootstrap
 
 ##Setup
 
 First, include the AlphaScroll CSS and JavaScript files in your HTML:
 
 ```html
-<link rel="stylesheet" type="text/css" href="css/jquery.mobile.alphascroll.css" />
-<script type="text/javascript" src="js/jquery.mobile.alphascroll.js"></script>
+<link rel="stylesheet" type="text/css" href="css/jquery.alphascroll.css" />
+<script type="text/javascript" src="js/jquery.alphascroll.js"></script>
 ```
 
-Create your listview as you normally would. In the demo, I take an array of names, sort it and then after looping through the array to build a set of `<li>` list items, append the list items to an unordered list that has its data-autodividers attribute set to true:
+Here's the example of html:
 
 ```html
-<ul id="mylistview" data-role="listview" data-autodividers="true"></ul>
+<div id="author-list">
+  <ul>
+    <li data-role="list-divider" role="heading" class="a">A</li>
+    <li data-first-letter="a"><a href="#">Amelia Webster</a></li>
+    <li data-first-letter="a"><a href="#">Andrew WifKinson</a></li>
+    <li data-first-letter="a"><a href="#">Archibald Carrington</a></li>
+    <li data-first-letter="a"><a href="#">Ariana Clapton</a></li>
+    <li data-first-letter="a"><a href="#">Ashley Carter</a></li>
+    <li data-role="list-divider" role="heading" class="b">B</li>
+    <li data-first-letter="b"><a href="#">Brenda Brown</a></li>
+    <li data-first-letter="b"><a href="#">Brooke Creighton</a></li>
+  </ul>
+</div>
 ```
 
-For dynamically generated lists, you would then call refresh to apply the jqMobile styles and finally call alphascroll on the listview to generate the alphabet scroller. The refresh and alphascroll() calls can be chained together:
+So then you can initiate alphaScroll like that:
 
 ```javascript
-$( '#mylistview' ).listview( 'refresh' ).alphascroll();
-```
-
-or called seperately:
-
-```javascript
-$( '#mylistview' ).listview( 'refresh' );
-$( '#mylistview' ).alphascroll();
-```
-
-For hard-coded lists that don't require a refresh, you can simply attach the alphascroll method to your listview:
-
-```javascript
-$( '#mylistview' ).alphascroll();
+$('#author-list').alphascroll();
 ```
 
 ##Customization
 
-The AlphaScroll plugin in its current state doesn't take any options. You may alter the look and placement of the scroll widget by editing the CSS in jquery.mobile.alphascroll.css.
+The AlphaScroll plugin in its current state doesn't take any options. You may alter the look and placement of the scroll widget by editing the CSS in jquery.alphascroll.css.
 
 ##Caveats
-
-By default, jQuery Mobile's listviews attach an arrow icon on the right side of each list item. These icons fall directly below the alphascroll widget, which can look a little funny. You can either remove the arrow icons by setting data-icon="false" on each list item (as in the demo), or provide a solid background color to the .alphascroll and .alphascroll:active selectors in the CSS.
 
 Testing on an iPhone 5, scrolling rapidly back and forth on the alphascroll widget can cause some screen flashing. This doesn't seem to happen on desktop browsers and is likely due to the slower processor speed of mobile devices.
