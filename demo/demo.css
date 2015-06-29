@@ -1,0 +1,44 @@
+#author-list ul {
+  list-style-type: none;
+  margin: 0 0 8px 0;
+  padding: 0;
+}
+
+#author-list ul li {
+  display: block;
+  background-color: #d1dee9;
+  height: 30px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+#author-list ul li a {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  height: 100%;
+  line-height: 30px;
+}
+
+#author-list ul li[data-role=list-divider] {
+  visibility: hidden;
+  height: 0;
+  margin: 0;
+}
+
+#alphascroll {
+  display: none;
+}
+
+@media (max-width: 792px) {
+  #author-list ul {
+    width: 95%;
+  }
+
+  #alphascroll {
+    display: block;
+  }
+
+}

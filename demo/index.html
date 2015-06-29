@@ -6,94 +6,108 @@
     <meta name="viewport" id="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=10.0,initial-scale=1.0" />
     <title>AlphaScroll Demo</title>
 
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../jquery.alphascroll.css" />
+    <link rel="stylesheet" type="text/css" href="demo.css" />
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="../jquery.alphascroll.js"></script>
 
     <script>
       $(document).ready(function() {
-        $('#mylistview').alphascroll();
+        $('#author-list').alphascroll();
       });
     </script>
 
   </head>
   <body>
-
-    <div>
-      <div>
-        <ul id="mylistview">
-          <li data-role="list-divider" role="heading" class="a">A</li>
-          <li data-first-letter="a"><a href="#">Amelia Webster</a></li>
-          <li data-first-letter="a"><a href="#">Andrew WifKinson</a></li>
-          <li data-first-letter="a"><a href="#">Archibald Carrington</a></li>
-          <li data-first-letter="a"><a href="#">Ariana Clapton</a></li>
-          <li data-first-letter="a"><a href="#">Ashley Carter</a></li>
-          <li data-role="list-divider" role="heading" class="b">B</li>
-          <li data-first-letter="b"><a href="#">Brenda Brown</a></li>
-          <li data-first-letter="b"><a href="#">Brooke Creighton</a></li>
-          <li data-role="list-divider" role="heading" class="c">C</li>
-          <li data-first-letter="c"><a href="#">Camilla Kapinksy</a></li>
-          <li data-first-letter="c"><a href="#">Caroline Miller</a></li>
-          <li data-first-letter="c"><a href="#">Charlotte Gardner</a></li>
-          <li data-first-letter="c"><a href="#">Cynthia Monroe</a></li>
-          <li data-role="list-divider" role="heading" class="e">E</li>
-          <li data-first-letter="e"><a href="#">Elizabeth Abramson</a></li>
-          <li data-first-letter="e"><a href="#">Elizabeth Cook</a></li>
-          <li data-first-letter="e"><a href="#">Ernie Carter</a></li>
-          <li data-first-letter="e"><a href="#">Evelyn Nash</a></li>
-          <li data-role="list-divider" role="heading" class="f">F</li>
-          <li data-first-letter="f"><a href="#">Fyodor Dostoevsky</a></li>
-          <li data-role="list-divider" role="heading" class="g">G</li>
-          <li data-first-letter="g"><a href="#">Gabriella Walkman</a></li>
-          <li data-first-letter="g"><a href="#">Gabrielle Chesterton</a></li>
-          <li data-first-letter="g"><a href="#">Genesis Hailey</a></li>
-          <li data-role="list-divider" role="heading" class="h">H</li>
-          <li data-first-letter="h"><a href="#">Hailey Carrington</a></li>
-          <li data-first-letter="h"><a href="#">Harry Chiglitz</a></li>
-          <li data-first-letter="h"><a href="#">Henry Miller</a></li>
-          <li data-role="list-divider" role="heading" class="i">I</li>
-          <li data-first-letter="i"><a href="#">Ira Wallace</a></li>
-          <li data-first-letter="i"><a href="#">Irma Nathan</a></li>
-          <li data-first-letter="i"><a href="#">Isabella Haig</a></li>
-          <li data-first-letter="i"><a href="#">Isabelle Morrison</a></li>
-          <li data-first-letter="i"><a href="#">Isabelle Wainwright</a></li>
-          <li data-role="list-divider" role="heading" class="j">J</li>
-          <li data-first-letter="j"><a href="#">JaMarcus Davidson</a></li>
-          <li data-first-letter="j"><a href="#">Jessica Cook</a></li>
-          <li data-first-letter="j"><a href="#">Jocelyn Higgins</a></li>
-          <li data-first-letter="j"><a href="#">Judith Brickman</a></li>
-          <li data-first-letter="j"><a href="#">Julia Oliver</a></li>
-          <li data-role="list-divider" role="heading" class="k">K</li>
-          <li data-first-letter="k"><a href="#">Kaitlyn Vaughan</a></li>
-          <li data-first-letter="k"><a href="#">Katherine Hamphrey</a></li>
-          <li data-role="list-divider" role="heading" class="p">P</li>
-          <li data-first-letter="p"><a href="#">Peter Carrington</a></li>
-          <li data-first-letter="p"><a href="#">Peyton Fulton</a></li>
-          <li data-role="list-divider" role="heading" class="r">R</li>
-          <li data-first-letter="r"><a href="#">Rachel Garblinski</a></li>
-          <li data-role="list-divider" role="heading" class="s">S</li>
-          <li data-first-letter="s"><a href="#">Samantha Brickman</a></li>
-          <li data-first-letter="s"><a href="#">Scotty Nash</a></li>
-          <li data-first-letter="s"><a href="#">Sofia Wesley</a></li>
-          <li data-first-letter="s"><a href="#">Sophia Goldman</a></li>
-          <li data-first-letter="s"><a href="#">Sophie Wainwright</a></li>
-          <li data-first-letter="s"><a href="#">Steven Goldman</a></li>
-          <li data-role="list-divider" role="heading" class="t">T</li>
-          <li data-first-letter="t"><a href="#">Trinity Neal</a></li>
-          <li data-role="list-divider" role="heading" class="v">V</li>
-          <li data-first-letter="v"><a href="#">Vanessa Nash</a></li>
-          <li data-first-letter="v"><a href="#">Victoria Brown</a></li>
-          <li data-first-letter="v"><a href="#">Victoria Gibbs</a></li>
-          <li data-first-letter="v"><a href="#">Vincent Wilthorpe</a></li>
-          <li data-first-letter="v"><a href="#">Vinny Amarillo</a></li>
-          <li data-role="list-divider" role="heading" class="w">W</li>
-          <li data-first-letter="w"><a href="#">Winston Smith</a></li>
-          <li data-role="list-divider" role="heading" class="z">Z</li>
-          <li data-first-letter="z"><a href="#">Zebediah Jones</a></li>
-          <li data-first-letter="z"><a href="#">Zoe Calhoun</a></li>
-          <li data-first-letter="z"><a href="#">Zoey Wainwright</a></li>
-        </ul>
+    <div class="container">
+      <h1>AlphaScroll</h1>
+      <p>To see alphascroll navigation make sure browser window's width is less than 792px as it's basic idea is to be visible on mobile devices.</p>
+      <p>Make window narrower to see columns get combined into one.</p>
+      <div id="author-list" class="row">
+        <div class="col-md-4">
+          <ul>
+            <li data-role="list-divider" role="heading" class="a">A</li>
+            <li data-first-letter="a"><a href="#">Amelia Webster</a></li>
+            <li data-first-letter="a"><a href="#">Andrew WifKinson</a></li>
+            <li data-first-letter="a"><a href="#">Archibald Carrington</a></li>
+            <li data-first-letter="a"><a href="#">Ariana Clapton</a></li>
+            <li data-first-letter="a"><a href="#">Ashley Carter</a></li>
+            <li data-role="list-divider" role="heading" class="b">B</li>
+            <li data-first-letter="b"><a href="#">Brenda Brown</a></li>
+            <li data-first-letter="b"><a href="#">Brooke Creighton</a></li>
+            <li data-role="list-divider" role="heading" class="c">C</li>
+            <li data-first-letter="c"><a href="#">Camilla Kapinksy</a></li>
+            <li data-first-letter="c"><a href="#">Caroline Miller</a></li>
+            <li data-first-letter="c"><a href="#">Charlotte Gardner</a></li>
+            <li data-first-letter="c"><a href="#">Cynthia Monroe</a></li>
+            <li data-role="list-divider" role="heading" class="e">E</li>
+            <li data-first-letter="e"><a href="#">Elizabeth Abramson</a></li>
+            <li data-first-letter="e"><a href="#">Elizabeth Cook</a></li>
+            <li data-first-letter="e"><a href="#">Ernie Carter</a></li>
+            <li data-first-letter="e"><a href="#">Evelyn Nash</a></li>
+            <li data-role="list-divider" role="heading" class="f">F</li>
+            <li data-first-letter="f"><a href="#">Fyodor Dostoevsky</a></li>
+            <li data-role="list-divider" role="heading" class="g">G</li>
+            <li data-first-letter="g"><a href="#">Gabriella Walkman</a></li>
+            <li data-first-letter="g"><a href="#">Gabrielle Chesterton</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <ul>
+            <li data-first-letter="g"><a href="#">Genesis Hailey</a></li>
+            <li data-role="list-divider" role="heading" class="h">H</li>
+            <li data-first-letter="h"><a href="#">Hailey Carrington</a></li>
+            <li data-first-letter="h"><a href="#">Harry Chiglitz</a></li>
+            <li data-first-letter="h"><a href="#">Henry Miller</a></li>
+            <li data-role="list-divider" role="heading" class="i">I</li>
+            <li data-first-letter="i"><a href="#">Ira Wallace</a></li>
+            <li data-first-letter="i"><a href="#">Irma Nathan</a></li>
+            <li data-first-letter="i"><a href="#">Isabella Haig</a></li>
+            <li data-first-letter="i"><a href="#">Isabelle Morrison</a></li>
+            <li data-first-letter="i"><a href="#">Isabelle Wainwright</a></li>
+            <li data-role="list-divider" role="heading" class="j">J</li>
+            <li data-first-letter="j"><a href="#">JaMarcus Davidson</a></li>
+            <li data-first-letter="j"><a href="#">Jessica Cook</a></li>
+            <li data-first-letter="j"><a href="#">Jocelyn Higgins</a></li>
+            <li data-first-letter="j"><a href="#">Judith Brickman</a></li>
+            <li data-first-letter="j"><a href="#">Julia Oliver</a></li>
+            <li data-role="list-divider" role="heading" class="k">K</li>
+            <li data-first-letter="k"><a href="#">Kaitlyn Vaughan</a></li>
+            <li data-first-letter="k"><a href="#">Katherine Hamphrey</a></li>
+            <li data-role="list-divider" role="heading" class="p">P</li>
+            <li data-first-letter="p"><a href="#">Peter Carrington</a></li>
+            <li data-first-letter="p"><a href="#">Peyton Fulton</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <ul>
+            <li data-role="list-divider" role="heading" class="r">R</li>
+            <li data-first-letter="r"><a href="#">Rachel Garblinski</a></li>
+            <li data-role="list-divider" role="heading" class="s">S</li>
+            <li data-first-letter="s"><a href="#">Samantha Brickman</a></li>
+            <li data-first-letter="s"><a href="#">Scotty Nash</a></li>
+            <li data-first-letter="s"><a href="#">Sofia Wesley</a></li>
+            <li data-first-letter="s"><a href="#">Sophia Goldman</a></li>
+            <li data-first-letter="s"><a href="#">Sophie Wainwright</a></li>
+            <li data-first-letter="s"><a href="#">Steven Goldman</a></li>
+            <li data-role="list-divider" role="heading" class="t">T</li>
+            <li data-first-letter="t"><a href="#">Trinity Neal</a></li>
+            <li data-role="list-divider" role="heading" class="v">V</li>
+            <li data-first-letter="v"><a href="#">Vanessa Nash</a></li>
+            <li data-first-letter="v"><a href="#">Victoria Brown</a></li>
+            <li data-first-letter="v"><a href="#">Victoria Gibbs</a></li>
+            <li data-first-letter="v"><a href="#">Vincent Wilthorpe</a></li>
+            <li data-first-letter="v"><a href="#">Vinny Amarillo</a></li>
+            <li data-role="list-divider" role="heading" class="w">W</li>
+            <li data-first-letter="w"><a href="#">Winston Smith</a></li>
+            <li data-role="list-divider" role="heading" class="z">Z</li>
+            <li data-first-letter="z"><a href="#">Zebediah Jones</a></li>
+            <li data-first-letter="z"><a href="#">Zoe Calhoun</a></li>
+            <li data-first-letter="z"><a href="#">Zoey Wainwright</a></li>
+          </ul>
+        </div>
       </div>
     </div>
 
